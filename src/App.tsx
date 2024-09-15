@@ -8,6 +8,7 @@ import i18n from "./i18n";
 import data from "./data.json"
 import About from "./components/About";
 import ItemPage from "./pages/ItemPage";
+import Contact from "./components/Contact";
 
 export const Mycontext = createContext<MyContextType | null>(null);
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ItemPage />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </BrowserRouter>
       </Mycontext.Provider>
