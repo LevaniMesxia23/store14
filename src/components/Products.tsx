@@ -40,9 +40,8 @@ function Products() {
     <div className={`${i18n.language === "en" ? "font-righteous" : "font-mikheil"} bg-gray-100 text-gray-900 p-8 min-h-screen`}>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {filteredProducts.map((item) => (
-          <Link key={item.id} to={`/product/${item.id}`}>
-            <div
-              className='flex flex-col items-center bg-white rounded-lg p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300'
+            <div key={item.id}
+              className='flex flex-col items-center bg-white rounded-lg p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer'
               data-aos="fade-up"
             >
               <img
@@ -56,11 +55,12 @@ function Products() {
               <p className='text-gray-600 text-center text-md mb-4 righteous-regular'>
                 ₾ {item.cost} {t('Gel')}
               </p>
-              <button className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors duration-300 righteous-regular'>
+              <Link key={item.id} to={`/product/${item.id}`}>
+              <button className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 hover:scale-105 transition-colors duration-300 righteous-regular'>
                 {t('Buy Now')}
               </button>
+              </Link>
             </div>
-          </Link>
         ))}
       </div>
     </div>
