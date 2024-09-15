@@ -32,7 +32,7 @@ const ItemPage = () => {
     console.log('Scrolling to top');
     window.scrollTo(0, 0);  
   }, []); 
-  
+
   if (!product) {
     return <div>Product not found</div>;
   }
