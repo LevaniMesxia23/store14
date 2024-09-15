@@ -1,6 +1,13 @@
 import Footer from "./Footer";
+import { Mycontext } from "../App";
+import { useContext } from "react";
 
 function Contact() {
+  const context = useContext(Mycontext);
+  if (!context) {
+    throw new Error("Header must be used within a MyContext.Provider");
+  }
+  const { onSubmit } = context;
   return (
     <>
     
@@ -13,7 +20,7 @@ function Contact() {
       </p>
       </div>
       <div className="w-full max-w-2xl">
-        <form className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Name
@@ -21,6 +28,7 @@ function Contact() {
             <input
               className="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               id="name"
+              name="name"
               type="text"
               placeholder="Your Name"
               style={{ borderWidth: '1px' }}
@@ -33,6 +41,7 @@ function Contact() {
             <input
               className="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               id="email"
+              name="email"
               type="email"
               placeholder="Your Email"
               style={{ borderWidth: '1px' }}
@@ -45,6 +54,7 @@ function Contact() {
             <input
               className="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               id="phone"
+              name="number"
               type="tel"
               placeholder="Your Phone Number"
               style={{ borderWidth: '1px' }}
@@ -57,6 +67,7 @@ function Contact() {
             <textarea
               className="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               id="message"
+              name="message"
               placeholder="Your Message"
               style={{ borderWidth: '1px' }}
             ></textarea>

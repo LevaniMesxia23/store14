@@ -5,6 +5,7 @@ interface MyContextType {
   isDropdownOpen: boolean;
   setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
   changeLanguage: (lng: string) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   filteredProducts: {
