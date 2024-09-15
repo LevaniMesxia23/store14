@@ -7,21 +7,34 @@ import { Link } from 'react-router-dom';
 
 function Products() {
   const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);  
-  }, []);
-
   const context = useContext(Mycontext);
+
   if (!context) {
     throw new Error("Products must be used within a MyContext.Provider");
   }
-  const { input, filteredProducts, setFilteredProducts, sortOption, result } = context;
+  
+  const { filteredProducts, setFilteredProducts, result } = context;
 
   useEffect(() => {
+    console.log('Initializing AOS');
     AOS.init({ duration: 1000 });
-    setFilteredProducts(result);
-  }, [input, setFilteredProducts, sortOption, result]);
+  }, []); 
+  
+  useEffect(() => {
+    console.log('Scrolling to top');
+    window.scrollTo(0, 0);  
+  }, []); 
+  useEffect(() => {
+    if (result) {
+      console.log('Setting filtered products', result);
+      setFilteredProducts(result);
+    }
+  }, []); 
+
+
+  if (!filteredProducts || filteredProducts.length === 0) {
+    return <p>{t('No products available')}</p>; 
+  }
 
   return (
     <div className={`${i18n.language === "en" ? "font-righteous" : "font-mikheil"} bg-gray-100 text-gray-900 p-8 min-h-screen`}>

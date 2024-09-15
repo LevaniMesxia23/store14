@@ -15,54 +15,6 @@
       "size": "m",
       "cost": 79,
       "quantity": 10
-    },
-    {
-      "id": 2,
-      "nameKey": "cristianoTshirt",
-      "image": "../public/images/ronaldoImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
-    },
-    {
-      "id": 2,
-      "nameKey": "cristianoTshirt",
-      "image": "../public/images/ronaldoImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
-    },
-    {
-      "id": 1,
-      "nameKey": "messiTShirt",
-      "image": "../public/images/messiImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
-    },
-    {
-      "id": 2,
-      "nameKey": "cristianoTshirt",
-      "image": "../public/images/ronaldoImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
-    },
-    {
-      "id": 2,
-      "nameKey": "cristianoTshirt",
-      "image": "../public/images/ronaldoImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
-    },
-    {
-      "id": 2,
-      "nameKey": "cristianoTshirt",
-      "image": "../public/images/ronaldoImg.png",
-      "size": "m",
-      "cost": 79,
-      "quantity": 10
     }
   ]
 }

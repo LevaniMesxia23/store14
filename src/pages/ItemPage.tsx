@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import data from "../data.json";
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import downArrow from "../../public/images/down-arrow-black.png";
-import SizeImg from "../../public/images/Screenshot 2024-09-15 at 01.36.36.png";
+import { useEffect, useState } from 'react';
+import downArrow from "../../dist/images/down-arrow-black.png";
+import SizeImg from "../../dist/images/size.png";
 import Footer from '../components/Footer';
-import backArrow from "../../public/images/arrow.png"
+import backArrow from "../../dist/images/arrow.png"
 import { useNavigate } from 'react-router-dom';
 
 type Product = {
@@ -27,7 +27,12 @@ const ItemPage = () => {
   const productId = parseInt(id || "", 10);
 
   const product = data.product.find((item: Product) => item.id === productId);
-
+  
+  useEffect(() => {
+    console.log('Scrolling to top');
+    window.scrollTo(0, 0);  
+  }, []); 
+  
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -35,6 +40,7 @@ const ItemPage = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
 
   return (
     <>

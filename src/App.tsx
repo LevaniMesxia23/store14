@@ -7,6 +7,7 @@ import ProductsPage from "./pages/ProductsPage";
 import i18n from "./i18n";
 import data from "./data.json"
 import About from "./components/About";
+import ItemPage from "./pages/ItemPage";
 
 export const Mycontext = createContext<MyContextType | null>(null);
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product/:id" element={<ItemPage />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </BrowserRouter>

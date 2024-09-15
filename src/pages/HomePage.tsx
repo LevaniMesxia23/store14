@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Mycontext } from "../App";
 import Footer from "../components/Footer";
@@ -14,6 +14,11 @@ function HomePage() {
     throw new Error("Header must be used within a MyContext.Provider");
   }
   const { isTablet } = context;
+
+  useEffect(() => {
+    console.log('Scrolling to top');
+    window.scrollTo(0, 0);  
+  }, []); 
 
   return (
     <div className={`${i18n.language === "en" ? "font-righteous" : "font-mikheil"}`}>
