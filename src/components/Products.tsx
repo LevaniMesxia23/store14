@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 import { Mycontext } from "../App";
 import { Link } from 'react-router-dom';
 
@@ -15,10 +15,10 @@ function Products() {
   
   const { filteredProducts, setFilteredProducts, result } = context;
 
-  useEffect(() => {
-    console.log('Initializing AOS');
-    AOS.init({ duration: 1000 });
-  }, []); 
+  // useEffect(() => {
+  //   console.log('Initializing AOS');
+  //   AOS.init({ duration: 1000 });
+  // }, []); 
   
   useEffect(() => {
     console.log('Scrolling to top');
