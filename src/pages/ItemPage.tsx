@@ -2,10 +2,10 @@ import { useParams } from 'react-router-dom';
 import data from "../data.json";
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import downArrow from "../../dist/images/down-arrow-black.png";
-import SizeImg from "../../dist/images/size.png";
+import downArrow from "../../public/images/down-arrow.png";
+import SizeImg from "../../public/images/logo.jpg";
 import Footer from '../components/Footer';
-import backArrow from "../../dist/images/arrow.png"
+import backArrow from "../../public/images/search.png"
 import { useNavigate } from 'react-router-dom';
 
 type Product = {
