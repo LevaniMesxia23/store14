@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
-import plus from "../../public/images/plus.png"
-import minus from "../../public/images/minus-sign.png"
-import instagram from "../../public/images/icon-instagram.svg"
+import plus from "/images/plus.png"
+import minus from "/images/minus-sign.png"
+import instagram from "/images/icon-instagram.svg"
 import { useTranslation } from 'react-i18next';
 import { Mycontext } from '../App';
 import { Link } from 'react-router-dom';

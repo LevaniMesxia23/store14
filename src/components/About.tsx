@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import zidane from '../../public/images/zidane.jpeg'; 
+import zidane from '/images/zidane.jpeg'; 
 
 import Footer from './Footer';
 import AOS from 'aos';

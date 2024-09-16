@@ -4,8 +4,8 @@ import { Mycontext } from "../App";
 import Footer from "../components/Footer";
 import Products from "../components/Products";
 import { useTranslation } from 'react-i18next';
-import MainImg from "../../public/images/focus.jpg";
-import papi from '../../public/images/papi.jpeg';
+import MainImg from "/images/focus.jpg";
+import papi from '/images/papi.jpeg';
 
 function HomePage() {
   const { i18n } = useTranslation();

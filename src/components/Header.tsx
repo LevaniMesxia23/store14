@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from "../../public/images/logo.jpg";
-import downArrow from "../../public/images/down-arrow.png";
+import logo from "/images/logo.jpg";
+import downArrow from "/images/down-arrow.png";
 import { Mycontext } from "../App";
 import { Fade as Hamburger } from 'hamburger-react';
 import { useTranslation } from 'react-i18next';
