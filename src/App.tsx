@@ -10,6 +10,8 @@ import About from "./components/About";
 import ItemPage from "./pages/ItemPage";
 import Contact from "./components/Contact";
 import Swal from 'sweetalert2'
+import AdminPanel from "./components/AdminPanel";
+import AdminLogin from "./components/AdminLogin";
 
 export const Mycontext = createContext<MyContextType | null>(null);
 
@@ -114,6 +116,8 @@ function App() {
           <Route path="/product/:id" element={<ItemPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
     </Mycontext.Provider>
