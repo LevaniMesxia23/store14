@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 import { Mycontext } from "../App";
 import Footer from "../components/Footer";
 import Products from "../components/Products";
@@ -22,12 +22,12 @@ function HomePage() {
 
   return (
     <div className={`${i18n.language === "en" ? "font-righteous" : "font-mikheil"}`}>
-      <Helmet>
+      {/* <Helmet>
         <meta charSet="utf-8" />
         <title>Burchu</title>
         <link rel="canonical" href="/images/logo.jpg" />
         <link rel="icon" href="/images/logo.jpg" type="image/jpeg" />
-      </Helmet>
+      </Helmet> */}
       {!isTablet ? (
         <img src={MainImg} className="w-full" alt="Main" />
       ) : (

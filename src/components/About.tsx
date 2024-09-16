@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import zidane from '../../public/images/zidane.jpeg'; 
 
 import Footer from './Footer';
-// import AOS from 'aos';
+import AOS from 'aos';
 import { Mycontext } from '../App';
 
 function About() {
@@ -13,12 +13,12 @@ function About() {
   if (!context) {
     throw new Error("Header must be used within a MyContext.Provider");
   }
-  // const { result,setFilteredProducts } = context;
+  const { result,setFilteredProducts } = context;
   
-  // useEffect(() => {
-  //   AOS.init({ duration: 500 });
-  //   setFilteredProducts(result);
-  // }, []);
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+    setFilteredProducts(result);
+  }, []);
   
   return (
     <>
