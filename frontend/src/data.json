@@ -1,0 +1,36 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "nameKey": "messiTShirt",
+      "image": "/images/messiImg.png",
+      "size": "m",
+      "cost": 79,
+      "quantity": 10
+    },
+    {
+      "id": 2,
+      "nameKey": "cristianoTshirt",
+      "image": "/images/ronaldoImg.png",
+      "size": "m",
+      "cost": 79,
+      "quantity": 10
+    },
+    {
+      "id": 3,
+      "nameKey": "messiTShirt",
+      "image": "/images/messiImg.png",
+      "size": "m",
+      "cost": 79,
+      "quantity": 10
+    },
+    {
+      "id": 4,
+      "nameKey": "cristianoTshirt",
+      "image": "/images/ronaldoImg.png",
+      "size": "m",
+      "cost": 79,
+      "quantity": 10
+    }
+  ]
+}
