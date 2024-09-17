@@ -71,7 +71,7 @@ function Header() {
               ))}
             </nav>
           )}
-          <div className="relative" onClick={toggleDropdown}>
+          <div className="relative -mb-[7px]" onClick={toggleDropdown}>
             <span className='text-white cursor-pointer'>{i18n.language === 'en' ? 'English' : 'ქართული'}</span>
             <img src={downArrow} alt="down arrow" className='w-4 h-4 cursor-pointer ml-2 inline-block' />
             <div className={`z-20 absolute top-full mt-4 bg-transparent border -ml-4 shadow-lg rounded-lg p-2 transition-all duration-300 ease-in-out overflow-hidden ${isDropdownOpen ? "max-h-40 opacity-100 visible" : "max-h-0 opacity-0 invisible"}`}>

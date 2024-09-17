@@ -41,7 +41,6 @@ const ItemPage = () => {
     navigate(-1);
   };
 
-
   return (
     <>
       <div className="container mx-auto p-6 font-roboto">
