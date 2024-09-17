@@ -2,10 +2,10 @@ import { useParams } from 'react-router-dom';
 import data from "../data.json";
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import downArrow from "/images/down-arrow.png";
-import SizeImg from "/images/logo.jpg";
+import downArrow from "/images/down-arrow-black.png";
+import SizeImg from "/images/size.png";
 import Footer from '../components/Footer';
-import backArrow from "/images/search.png"
+import backArrow from "/images/back-arrow.png"
 import { useNavigate } from 'react-router-dom';
 
 type Product = {
@@ -46,9 +46,8 @@ const ItemPage = () => {
     <>
       <div className="container mx-auto p-6 font-roboto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className=' w-8 h-8 rounded-[50%] bg-black flex items-center justify-center' onClick={handleGoBack}>
-          <img src={backArrow} alt="" className='w-4 h-4'/>
-          </div>
+          <img src={backArrow} alt="" className='w-4 h-4' onClick={handleGoBack}/>
+
           <div className="flex justify-center items-center">
             {product.image && (
               <img src={product.image} alt={t(product.nameKey)} className="w-full h-auto object-cover rounded-lg shadow-md" />
