@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-
 const AdminPanel: React.FC = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
