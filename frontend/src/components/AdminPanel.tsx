@@ -2,7 +2,10 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const AdminPanel = () => {
-
+  const generateRandomNumericId = () => {
+    return Math.floor(Date.now() + Math.random() * 10000);
+  };
+  const [producId, setProductId] = useState(generateRandomNumericId());
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
@@ -19,6 +22,9 @@ const AdminPanel = () => {
       });
       return;
     }
+    const newProductId = generateRandomNumericId();
+    setProductId(newProductId);
+
     console.log({ name: productName, price: productPrice });
     try {
       const res = await fetch("http://localhost:3000/api/products", {
@@ -27,7 +33,7 @@ const AdminPanel = () => {
           "Content-Type": "application/json",
           Accept: "application/json"
         },
-        body: JSON.stringify({ id: 200, name: productName, price: productPrice, quantity: productQuantity, cost: productCost, size: productSize, image: productImage })
+        body: JSON.stringify({ id: producId, name: productName, price: productPrice, quantity: productQuantity, cost: productCost, size: productSize, image: productImage })
       }).then(res => res.json());
       console.log(res);
       if (res) {

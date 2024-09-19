@@ -6,6 +6,11 @@ export const getAllProduct = async (req, res) => {
     const newData = data.map((item) => ({
       id: item.id,
       name: item.name,
+      price: item.price,
+      size: item.size,
+      quantity: item.quantity,
+      image: item.image,
+      cost: item.cost,
       status: item.status,
     }));
     return res.json(newData);

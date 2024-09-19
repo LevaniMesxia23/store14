@@ -12,6 +12,10 @@ const productSchema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  price: {
+    type: Schema.Types.String,
+    required: true
+  },
   image: {
     type: Schema.Types.String,
     required: true,
