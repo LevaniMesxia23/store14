@@ -1,22 +1,9 @@
-import express from "express";
-import {
-  addProduct,
-  deleteMany,
-  deleteProduct,
-  getAllProduct,
-  updateProduct,
-} from "../controllers/burchuProducts.js";  
+import express from 'express';
+import { getAllProduct, addProduct } from '../controllers/burchuProducts.js'; 
 
-const productRouter = express.Router();
+const router = express.Router();
 
-productRouter.get("/products", getAllProduct); 
+router.get('/', getAllProduct); 
+router.post('/', addProduct); 
 
-productRouter.post("/product", addProduct);
-
-productRouter.put("/product/:id", updateProduct);
-
-productRouter.delete("/product/:id", deleteProduct);
-
-productRouter.delete("/products/inactive", deleteMany);
-
-export default productRouter;
+export default router;

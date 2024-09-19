@@ -16,7 +16,6 @@ type Product = {
   quantity: number;
 };
 
-
 const ItemPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();

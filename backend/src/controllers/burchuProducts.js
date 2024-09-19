@@ -12,10 +12,12 @@ export const getAllProduct = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error retrieving products", error });
   }
+  res.json("Hello World")
 };
 
 export const addProduct = async (req, res) => {
   try {
+    console.log(req.body)
     const productData = req.body;
     const item = new Product(productData);
     const result = await item.save();

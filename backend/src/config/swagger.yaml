@@ -36,7 +36,24 @@ paths:
                       type: string
                     image:
                       type: string
-
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '201':
+          description: Product created
+        '400':
+          description: Invalid input
   /product/{id}:
     get:
       tags:

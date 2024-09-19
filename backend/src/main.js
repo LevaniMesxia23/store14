@@ -15,7 +15,7 @@ connectToMongo();
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
-app.use("/api", productRouter);
+app.use("/api/products", productRouter);
 
 app.use("/", ...SwaggerMiddleware());
 

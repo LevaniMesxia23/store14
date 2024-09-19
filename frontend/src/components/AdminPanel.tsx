@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const AdminPanel: React.FC = () => {
+const AdminPanel = () => {
+
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
+  const [productQuantity, setProductQuantity] = useState('');
+  const [productCost, setProductCost] = useState('');
+  const [productSize, setProductSize] = useState('');
+  const [productImage, setProductImage] = useState('');
 
   const handleAddProduct = async () => {
     if (!productName || !productPrice) {
@@ -14,18 +19,18 @@ const AdminPanel: React.FC = () => {
       });
       return;
     }
-
+    console.log({ name: productName, price: productPrice });
     try {
-      const res = await fetch("../data.json", {
+      const res = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json"
         },
-        body: JSON.stringify({ name: productName, price: productPrice })
+        body: JSON.stringify({ id: 200, name: productName, price: productPrice, quantity: productQuantity, cost: productCost, size: productSize, image: productImage })
       }).then(res => res.json());
-
-      if (res.success) {
+      console.log(res);
+      if (res) {
         Swal.fire({
           title: "Product Added!",
           text: "The product has been successfully added.",
@@ -33,6 +38,10 @@ const AdminPanel: React.FC = () => {
         });
         setProductName('');
         setProductPrice('');
+        setProductQuantity('');
+        setProductSize('');
+        setProductImage('');
+        setProductCost('');
       } else {
         Swal.fire({
           title: "Oops!",
@@ -51,29 +60,72 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="admin-panel">
-      <h1>Admin Panel</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h1 className="text-2xl font-semibold mb-6">Admin Panel</h1>
       <form onSubmit={(e) => {
         e.preventDefault();
         handleAddProduct();
-      }}>
-        <label>
-          Product Name:
+      }} className="space-y-4">
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Name:</label>
           <input
             type="text"
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
           />
-        </label>
-        <label>
-          Product Price:
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Price:</label>
           <input
             type="text"
             value={productPrice}
             onChange={(e) => setProductPrice(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
           />
-        </label>
-        <button type="submit">Add Product</button>
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Quantity:</label>
+          <input
+            type="text"
+            value={productQuantity}
+            onChange={(e) => setProductQuantity(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Size:</label>
+          <input
+            type="text"
+            value={productSize}
+            onChange={(e) => setProductSize(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Image:</label>
+          <input
+            type="file"
+            value={productImage}
+            onChange={(e) => setProductImage(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label className="font-medium">Product Cost:</label>
+          <input
+            type="text"
+            value={productCost}
+            onChange={(e) => setProductCost(e.target.value)}
+            className="p-2 border border-gray-300 rounded-lg"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Add Product
+        </button>
       </form>
     </div>
   );
