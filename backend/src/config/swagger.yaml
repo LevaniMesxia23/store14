@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Burchu Store
+  description: API for the Burchu store project
+  version: 1.0.0
+
+servers:
+  - url: https://new-project-backend.example.com/api
+    description: Production server
+  - url: http://localhost:3000/api
+    description: Local server
+
+paths:
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Get all products
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    price:
+                      type: number
+                    description:
+                      type: string
+                    image:
+                      type: string
+
+  /product/{id}:
+    get:
+      tags:
+        - Products
+      summary: Get product by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  price:
+                    type: number
+                  description:
+                    type: string
+                  image:
+                    type: string
+        "404":
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /contact:
+    post:
+      tags:
+        - Contact
+      summary: Submit contact form
+      requestBody:
+        description: Contact form data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  required: true
+                email:
+                  type: string
+                  format: email
+                  required: true
+                phone:
+                  type: string
+                  required: false
+                message:
+                  type: string
+                  required: true
+      responses:
+        "200":
+          description: Contact form submitted successfully
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

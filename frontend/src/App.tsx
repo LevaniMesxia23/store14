@@ -9,11 +9,9 @@ import data from "./data.json";
 import About from "./components/About";
 import ItemPage from "./pages/ItemPage";
 import Contact from "./components/Contact";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import AdminPanel from "./components/AdminPanel";
 import AdminLogin from "./components/AdminLogin";
-
-
 
 export const Mycontext = createContext<MyContextType | null>(null);
 
@@ -30,66 +28,68 @@ function App() {
     setDropdownOpen(false);
   };
 
-  const result = data.product.filter(user => 
-    user && user.nameKey && user.nameKey.toLowerCase().includes(input.toLowerCase())
+  const result = data.product.filter(
+    (user) =>
+      user &&
+      user.nameKey &&
+      user.nameKey.toLowerCase().includes(input.toLowerCase())
   );
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-  
+
     const name = formData.get("name")?.toString().trim() || "";
     const email = formData.get("email")?.toString().trim() || "";
     const phone = formData.get("number")?.toString().trim() || "";
     const message = formData.get("message")?.toString().trim() || "";
-  
+
     if (!name || !email || !phone || !message) {
       Swal.fire({
         title: "Incomplete Form",
         text: "Please fill out all fields before submitting.",
-        icon: "warning"
+        icon: "warning",
       });
-      return; 
+      return;
     }
-  
+
     formData.append("access_key", "61e5d23d-e972-4421-87df-52095f21cd7d");
-  
+
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
-  
+
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          Accept: "application/json",
         },
-        body: json
+        body: json,
       }).then((res) => res.json());
-  
+
       if (res.success) {
         Swal.fire({
           title: "Good job!",
           text: "You contacted us!",
-          icon: "success"
+          icon: "success",
         });
       } else {
         Swal.fire({
           title: "Oops!",
           text: "Something went wrong. Please try again.",
-          icon: "error"
+          icon: "error",
         });
       }
     } catch (error) {
       Swal.fire({
         title: "Error!",
         text: "There was an issue with your submission. Please try again.",
-        icon: "error"
+        icon: "error",
       });
-      console.log(error)
+      console.log(error);
     }
   };
-  
 
   return (
     <Mycontext.Provider
@@ -107,7 +107,7 @@ function App() {
         sortOption,
         setSortOption,
         result,
-        onSubmit
+        onSubmit,
       }}
     >
       <BrowserRouter>
