@@ -24,10 +24,10 @@ const productSchema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
-  cost: {
-    type: Schema.Types.Number,
-    required: true,
-  },
+  // cost: {
+  //   type: Schema.Types.Number,
+  //   required: true,
+  // },
   quantity: {
     type: Schema.Types.Number,
     required: true,

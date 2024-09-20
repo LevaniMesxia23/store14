@@ -13,7 +13,7 @@ interface MyContextType {
     nameKey: string;
     image: string;
     size: string;
-    cost: number;
+    price: number;
     quantity: number;
   }[];
   setFilteredProducts: React.Dispatch<React.SetStateAction<{
@@ -21,7 +21,7 @@ interface MyContextType {
     nameKey: string;
     image: string;
     size: string;
-    cost: number;
+    price: number;
     quantity: number;
   }[]>>;
   sortOption: string; 
@@ -31,7 +31,7 @@ interface MyContextType {
     nameKey: string;
     image: string;
     size: string;
-    cost: number;
+    price: number;
     quantity: number;
 }[]
 }

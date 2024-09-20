@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 interface Products {
   id: number;        
   name: string;
-  price: number;        
-  quantity: number;     
-  cost: number;         
+  price: number;     
+     
+  quantity: number;         
   size: string;
   image: string;       
 }
@@ -36,7 +36,7 @@ const Product = () => {
             <h2 className="text-xl font-medium mb-2">{product.name}</h2>
             <p className=' text-black'>Price: ${product.price}</p>
             <p>Quantity: {product.quantity}</p>
-            <p>Cost: ${product.cost}</p>
+      
             <p>Size: {product.size}</p>
           </div>
         ))}

@@ -20,9 +20,9 @@ function FilterSort() {
 
   result.sort((a, b) => {
     if (sortOption === "priceAsc") {
-      return a.cost - b.cost;
+      return a.price - b.price;
     } else if (sortOption === "priceDesc") {
-      return b.cost - a.cost;
+      return b.price - a.price;
     }
     return 0;
   });
