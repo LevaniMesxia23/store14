@@ -8,30 +8,39 @@ interface MyContextType {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
+  products: Products[]
   filteredProducts: {
-    id: number;
-    nameKey: string;
-    image: string;
+    id: number;        
+    name: string;
+    price: number;     
+    quantity: number;         
     size: string;
-    price: number;
-    quantity: number;
+    image: string;   
   }[];
   setFilteredProducts: React.Dispatch<React.SetStateAction<{
-    id: number;
-    nameKey: string;
-    image: string;
+    id: number;        
+    name: string;
+    price: number;     
+    quantity: number;         
     size: string;
-    price: number;
-    quantity: number;
+    image: string;   
   }[]>>;
   sortOption: string; 
   setSortOption: React.Dispatch<React.SetStateAction<string>>;
-  result: {
-    id: number;
-    nameKey: string;
-    image: string;
-    size: string;
-    price: number;
-    quantity: number;
-}[]
+//   result: {
+//     id: number;        
+//     name: string;
+//     price: number;     
+//     quantity: number;         
+//     size: string;
+//     image: string;   
+// }[];
+}
+interface Products {
+  id: number;        
+  name: string;
+  price: number;     
+  quantity: number;         
+  size: string;
+  image: string;       
 }

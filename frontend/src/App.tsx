@@ -1,11 +1,10 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import { useMediaQuery } from "@custom-react-hooks/all";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
 import i18n from "./i18n";
-import data from "./data.json";
 import About from "./components/About";
 import ItemPage from "./pages/ItemPage";
 import Contact from "./components/Contact";
@@ -16,11 +15,27 @@ import AdminLogin from "./components/AdminLogin";
 export const Mycontext = createContext<MyContextType | null>(null);
 
 function App() {
+  const [products, setProducts] = useState<Products[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/products");
+        const data = await res.json();
+        setProducts(data); 
+        setFilteredProducts(data); 
+      } catch (error) {
+        console.error('Failed to fetch products', error);
+      }
+    };
+    fetchProducts();
+  }, []);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const [burgerClicked, setBurgerClicked] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(data.product);
+  // const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState("priceAsc");
 
   const changeLanguage = (lng: string) => {
@@ -28,9 +43,26 @@ function App() {
     setDropdownOpen(false);
   };
 
-  const result = data.product.filter(user => 
-    user && user.nameKey && user.nameKey.toLowerCase().includes(input.toLowerCase())
-  );
+  // const result = products.filter(user => 
+  //   user && user.name && user.name.toLowerCase().includes(input.toLowerCase())
+  // );
+
+  useEffect(() => {
+    const filtered = products.filter(product => 
+      product && product.name && product.name.toLowerCase().includes(input.toLowerCase())
+    );
+  
+    filtered.sort((a, b) => {
+      if (sortOption === "priceAsc") {
+        return a.price - b.price;
+      } else if (sortOption === "priceDesc") {
+        return b.price - a.price;
+      }
+      return 0;
+    });
+  
+    setFilteredProducts(filtered); 
+  }, [input, sortOption, products]); 
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -104,8 +136,9 @@ function App() {
         setFilteredProducts,
         sortOption,
         setSortOption,
-        result,
-        onSubmit
+        // result,
+        onSubmit,
+        products
       }}
     >
       <BrowserRouter>

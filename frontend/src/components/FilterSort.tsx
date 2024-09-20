@@ -16,20 +16,11 @@ function FilterSort() {
     setFilteredProducts,
     sortOption,
     setSortOption,
-    result } = context;
-
-  result.sort((a, b) => {
-    if (sortOption === "priceAsc") {
-      return a.price - b.price;
-    } else if (sortOption === "priceDesc") {
-      return b.price - a.price;
-    }
-    return 0;
-  });
+    products } = context;
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    setFilteredProducts(result);
+    setFilteredProducts(products);
   }, [input, setFilteredProducts, sortOption]);
 
 const handleChange = (value: SetStateAction<string>) => {
