@@ -1,14 +1,7 @@
 import { useContext } from 'react';
 import { Mycontext } from '../App';
-
-// interface Products {
-//   id: number;        
-//   name: string;
-//   price: number;     
-//   quantity: number;         
-//   size: string;
-//   image: string;       
-// }
+import { Link } from 'react-router-dom';
+import { t } from 'i18next';
 
 const Product = () => {
   const context = useContext(Mycontext);
@@ -28,6 +21,11 @@ const Product = () => {
             <p className=' text-black'>Price: ${product.price}</p>
             <p>Quantity: {product.quantity}</p>
             <p>Size: {product.size}</p>
+            <Link to={`/product/${product.id}`}>
+              <button className='bg-gray-800 text-white px-4 py-2 mt-4 rounded-md hover:bg-gray-700 hover:scale-105 transition-colors duration-300'>
+                {t('Buy Now')}
+              </button>
+            </Link>
           </div>
         ))}
       </div>
