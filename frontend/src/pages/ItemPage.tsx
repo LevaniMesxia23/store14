@@ -86,7 +86,9 @@ const ItemPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className='bottom-0'>
+        <Footer />
+      </div>
     </>
   );
 };
