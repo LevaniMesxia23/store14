@@ -35,17 +35,12 @@ function App() {
   const [burgerClicked, setBurgerClicked] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [input, setInput] = useState("");
-  // const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState("priceAsc");
-
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     setDropdownOpen(false);
   };
 
-  // const result = products.filter(user => 
-  //   user && user.name && user.name.toLowerCase().includes(input.toLowerCase())
-  // );
 
   useEffect(() => {
     const filtered = products.filter(product => 

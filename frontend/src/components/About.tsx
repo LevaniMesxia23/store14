@@ -13,11 +13,11 @@ function About() {
   if (!context) {
     throw new Error("Header must be used within a MyContext.Provider");
   }
-  const { result,setFilteredProducts } = context;
+  const { products,setFilteredProducts } = context;
   
   useEffect(() => {
     AOS.init({ duration: 500 });
-    setFilteredProducts(result);
+    setFilteredProducts(products);
   }, []);
   
   return (
