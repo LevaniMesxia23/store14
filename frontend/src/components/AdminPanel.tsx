@@ -9,7 +9,6 @@ const AdminPanel = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
-  // const [productCost, setProductCost] = useState('');
   const [productSize, setProductSize] = useState('');
   const [productImage, setProductImage] = useState('');
 
@@ -34,8 +33,9 @@ const AdminPanel = () => {
           Accept: "application/json"
         },
         body: JSON.stringify({ id: producId, name: productName, price: productPrice, quantity: productQuantity,  size: productSize, image: productImage })
-      }).then(res => res.json());
-      console.log(res);
+      })
+      const data = await (res.json)
+      console.log(data);
       if (res) {
         Swal.fire({
           title: "Product Added!",
@@ -47,7 +47,6 @@ const AdminPanel = () => {
         setProductQuantity('');
         setProductSize('');
         setProductImage('');
-        // setProductCost('');
       } else {
         Swal.fire({
           title: "Oops!",
@@ -117,15 +116,7 @@ const AdminPanel = () => {
             className="p-2 border border-gray-300 rounded-lg"
           />
         </div>
-        {/* <div className="flex flex-col space-y-2">
-          <label className="font-medium">Product Cost:</label>
-          <input
-            type="text"
-            value={productCost}
-            onChange={(e) => setProductCost(e.target.value)}
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-        </div> */}
+
         <button
           type="submit"
           className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

@@ -6,9 +6,9 @@ const AdminLogin: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Example login check (use a secure method in real applications)
+
     if (username === 'admin' && password === 'admin') {
-      // Redirect to admin panel
+
       window.location.href = '/admin';
     } else {
       Swal.fire({

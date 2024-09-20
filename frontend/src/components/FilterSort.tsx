@@ -18,6 +18,7 @@ function FilterSort() {
     setSortOption,
     products } = context;
 
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
     setFilteredProducts(products);

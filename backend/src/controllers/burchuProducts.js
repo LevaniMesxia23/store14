@@ -10,7 +10,6 @@ export const getAllProduct = async (req, res) => {
       size: item.size,
       quantity: item.quantity,
       image: item.image,
-      // cost: item.cost,
       status: item.status,
     }));
     return res.json(newData);
