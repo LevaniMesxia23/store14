@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import { Mycontext } from '../App';
-import { Link } from 'react-router-dom';
-import { t } from 'i18next';
+import { useContext } from "react";
+import { Mycontext } from "../App";
+import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 const Product = () => {
   const context = useContext(Mycontext);
@@ -18,7 +18,7 @@ const Product = () => {
         {filteredProducts.map((product) => (
           <div key={product.id} className="p-4 border rounded-lg shadow-sm">
             <img
-              src={`http://localhost:3000/uploads/${product.image}`} 
+              src={`http://localhost:3000/uploads/${product.image}`}
               alt={product.name}
               className="w-full h-48 object-cover mb-4 rounded-md"
             />
@@ -28,7 +28,7 @@ const Product = () => {
             <p>Size: {product.size}</p>
             <Link to={`/product/${product.id}`}>
               <button className="bg-gray-800 text-white px-4 py-2 mt-4 rounded-md hover:bg-gray-700">
-                {t('Buy Now')}
+                {t("Buy Now")}
               </button>
             </Link>
           </div>

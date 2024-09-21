@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const AdminLogin: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-
-    if (username === 'admin' && password === 'admin') {
-
-      window.location.href = '/admin';
+    if (username === "admin" && password === "admin") {
+      window.location.href = "/admin";
     } else {
       Swal.fire({
         title: "Login Failed",
         text: "Invalid credentials. Please try again.",
-        icon: "error"
+        icon: "error",
       });
     }
   };
