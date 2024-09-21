@@ -25,6 +25,7 @@ function App() {
         const data = await res.json();
         setProducts(data); 
         setFilteredProducts(data); 
+        console.log(data)
       } catch (error) {
         console.error('Failed to fetch products', error);
       }
