@@ -21,15 +21,26 @@ export const getAllProduct = async (req, res) => {
 
 export const addProduct = async (req, res) => {
   try {
-    console.log(req.body)
     const productData = req.body;
+    
+    // Check if an image was uploaded
+    if (req.file) {
+      productData.image = `/uploads/${req.file.filename}`; // Store image path in the database
+    }
+
     const item = new Product(productData);
     const result = await item.save();
-    res.status(201).json(result);
+    
+    res.status(201).json({
+      message: "Product added successfully!",
+      product: result,
+      imagePath: productData.image, // Return the path to the uploaded image
+    });
   } catch (error) {
     res.status(500).json({ message: "Error adding product", error });
   }
 };
+
 
 export const updateProduct = async (req, res) => {
   try {

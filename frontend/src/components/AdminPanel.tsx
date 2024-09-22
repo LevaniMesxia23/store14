@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const AdminPanel = () => {
   const generateRandomNumericId = () => {
@@ -25,51 +26,67 @@ const AdminPanel = () => {
     setProductId(newProductId);
 
     console.log({ name: productName, price: productPrice });
-    try {
-      const res = await fetch("http://localhost:3000/api/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
+
+    // const sendBookedMovies = async (item: Movie) => {
+      try {
+        const res = await axios.post(
+          "http://localhost:3000/api/products",
+          {
           id: producId,
           name: productName,
           price: productPrice,
           quantity: productQuantity,
           size: productSize,
           image: productImage,
-        }),
-      });
-      const data = await res.json;
-      console.log(data);
-      if (res) {
+          }
+        );
+        if (res) {
+          Swal.fire({
+            title: "Product Added!",
+            text: "The product has been successfully added.",
+            icon: "success",
+          });
+          setProductName("");
+          setProductPrice("");
+          setProductQuantity("");
+          setProductSize("");
+          setProductImage("");
+        } else {
+          Swal.fire({
+            title: "Oops!",
+            text: "Something went wrong. Please try again.",
+            icon: "error",
+          });
+        }
+      } catch (error) {
         Swal.fire({
-          title: "Product Added!",
-          text: "The product has been successfully added.",
-          icon: "success",
-        });
-        setProductName("");
-        setProductPrice("");
-        setProductQuantity("");
-        setProductSize("");
-        setProductImage("");
-      } else {
-        Swal.fire({
-          title: "Oops!",
-          text: "Something went wrong. Please try again.",
+          title: "Error!",
+          text: "There was an issue with your request. Please try again.",
           icon: "error",
         });
+        console.log(error);
       }
-    } catch (error) {
-      Swal.fire({
-        title: "Error!",
-        text: "There was an issue with your request. Please try again.",
-        icon: "error",
-      });
-      console.log(error);
-    }
-  };
+      }
+    
+    // try {
+    //   const res = await fetch("http://localhost:3000/api/products", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       id: producId,
+    //       name: productName,
+    //       price: productPrice,
+    //       quantity: productQuantity,
+    //       size: productSize,
+    //       image: productImage,
+    //     }),
+    //   });
+    //   const data = await res.json;
+    //   console.log(data);
+      
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">

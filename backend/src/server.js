@@ -1,31 +1,29 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import productRoutes from './routes/productRoutes.js'; 
-import app from "express"
+import express from "express";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import cors from "cors";
+import path from "path";
+
+import connectToMongo from "./config/mongo.js";
+import productRouter from "./routes/productRoutes.js";
+import SwaggerMiddleware from "./middlewares/swagger-middleware.js";
 
 const app = express();
-const port = process.env.PORT || 3000; 
-
-const connectToMongo = async () => {
-  try {
-    const connectionUrl = process.env.MONGO_URL;
-    await mongoose.connect(connectionUrl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('Error connecting to MongoDB', error);
-    process.exit(1);
-  }
-};
+dotenv.config();
 
 connectToMongo();
 
-app.use(express.json()); 
+app.use(cors({ origin: "*" }));
+app.use(bodyParser.json());
 
-app.use('/api/products', productRoutes); 
+// Serve static files (uploaded images)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.use("/api/products", productRouter);
+
+app.use("/", ...SwaggerMiddleware());
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
