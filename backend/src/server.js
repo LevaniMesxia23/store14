@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import productRoutes from './routes/productRoutes.js'; 
-import app from "express"
+import productRoutes from './routes/productRoutes.js';
 
 const app = express();
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
+
 const connectToMongo = async () => {
   try {
     const connectionUrl = process.env.MONGO_URL;
@@ -21,9 +21,9 @@ const connectToMongo = async () => {
 
 connectToMongo();
 
-app.use(express.json()); 
+app.use(express.json());
 
-app.use('/api/products', productRoutes); 
+app.use('/api/products', productRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
